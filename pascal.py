@@ -29,14 +29,21 @@ class Solution:
         # return type: list[list[int]]
 
         # TODO: Write code below to return a nested list with the solution to the prompt
-        result = [[1]]
-        for line in range(2, rows+2):
-            newline = [1]
-            for i in range(1, line-1):
-                newline.append(result[-1][i-1] + result[-1][i])
-            newline.append(1)
-            result.append(newline)
+        if rows == 0:
+            return []
+        if rows == 1:
+            result[[1]]
+            
+        result = []
+        for i in range(1, rows+1):
+            num = 1
+            temp = []
+            for j in range(1, i+1):
+                temp.append(num)
+                num = num * (i-j) // j
+            result.append(temp)
         return result
+
 def main():
     num = int(input())
 
