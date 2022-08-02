@@ -29,20 +29,19 @@ class Solution:
         # return type: list[list[int]]
 
         # TODO: Write code below to return a nested list with the solution to the prompt
-        if rows == 0:
-            return []
-        if rows == 1:
-            result[[1]]
-            
-        result = []
-        for i in range(1, rows+1):
-            num = 1
-            temp = []
-            for j in range(1, i+1):
-                temp.append(num)
-                num = num * (i-j) // j
-            result.append(temp)
-        return result
+        rows_1=  [int(x) for x in str(rows)]
+        if rows_1 == 1:
+            return [[1]]
+        else:
+            res_arr = rows_1-1
+            cur_row = [1] 
+            prev_row = res_arr[-1] 
+            for i in range(len(prev_row)-1):
+                cur_row.append(prev_row[i] + prev_row[i+1]) 
+            cur_row += [1] 
+            res_arr.append(cur_row)
+            return res_arr
+
 
 def main():
     num = int(input())
